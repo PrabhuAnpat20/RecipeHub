@@ -1,14 +1,15 @@
 import React from "react";
 import Banner from "../components/home/Banner";
 import TimelineComponent from "../components/home/Timeline";
+import isNotAuth from "@/lib/hooks/isNotAuth";
+import Landing from "../components/home/Landing";
 
-function page() {
+function Home() {
   return (
     <>
-      <Banner />
-      <TimelineComponent />
+      <Landing />
     </>
   );
 }
 
-export default page;
+export default Home;

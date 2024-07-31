@@ -25,18 +25,10 @@ function Banner() {
           </div>
         </div>
         <div className="flex my-4   justify-center">
-          {/* <Image
-            src="/banner.png"
-            alt="Delicious Food"
-            width={400} // Adjust width as needed
-            height={150} // Adjust height as needed
-            quality={90} // Optional: Adjust image quality
-          /> */}
           <img src="/banner.png" alt="" className=" w-48 md:w-96 " />
         </div>
       </div>
     </div>
   );
 }
-
 export default Banner;

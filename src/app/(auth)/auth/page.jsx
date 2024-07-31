@@ -1,5 +1,15 @@
 "use client";
 import React, { useState } from "react";
+import { auth, googleProvider } from "@/app/lib/firebase/clientApp";
+import { toast } from "sonner";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+  updateProfile, // Import updateProfile
+} from "firebase/auth";
+import { useRouter } from "next/navigation";
+import isAuth from "@/lib/hooks/isAuth";
 
 function Auth() {
   const [isLogin, setIsLogin] = useState(true);
@@ -7,21 +17,59 @@ function Auth() {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const router = useRouter();
 
-  const handleSubmit = (e) => {
+  const signInWithGoogle = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      console.log(result);
+      toast.success("Logged in with Google successfully!");
+      router.push("/"); // Redirect after successful sign-in
+    } catch (error) {
+      toast.error(`Error: ${error.message}`);
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isLogin) {
-      // Handle login logic
-      console.log("Login:", { email, password });
-    } else {
-      // Handle signup logic
-      console.log("Signup:", { firstName, lastName, email, password });
+
+    try {
+      if (isLogin) {
+        await signInWithEmailAndPassword(auth, email, password);
+        toast.success("Logged in successfully!");
+        router.push("/");
+      } else {
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        const user = userCredential.user;
+
+        await updateProfile(user, { displayName: `${firstName} ${lastName}` });
+        console.log("Profile updated successfully");
+
+        // Wait a moment and fetch the user again
+        const updatedUser = auth.currentUser;
+        console.log("Updated user displayName:", updatedUser.displayName);
+        toast.success("Signed up successfully!");
+
+        // Optionally set user data in Firestore
+        // await setDoc(doc(firestore, "users", user.uid), {
+        //   firstName,
+        //   lastName,
+        //   email: user.email,
+        // });
+
+        router.push("/"); // Redirect after sign-up
+      }
+    } catch (error) {
+      toast.error(`Error: ${error.message}`);
     }
   };
 
   const toggleForm = () => {
     setIsLogin(!isLogin);
-    // Reset form fields
     setEmail("");
     setPassword("");
     setFirstName("");
@@ -31,8 +79,8 @@ function Auth() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-12 min-h-screen">
       {/* Left Section */}
-      <div className="flex items-center justify-center  col-span-5 bg-[#F3893B] ">
-        <img src="chef.webp" alt="" className="" />
+      <div className="flex items-center justify-center col-span-5 bg-[#F3893B]">
+        <img src="chef.webp" alt="Chef" className="" />
       </div>
 
       {/* Right Section */}
@@ -120,6 +168,12 @@ function Auth() {
               {isLogin ? "Login" : "Sign Up"}
             </button>
           </form>
+          <button
+            onClick={signInWithGoogle}
+            className="w-full py-2 mt-4 bg-slate-50 hover:bg-slate-100 text-black font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-slate-100 focus:ring-opacity-75"
+          >
+            Sign in with Google
+          </button>
           <p className="text-center mt-4">
             {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
             <button
@@ -136,4 +190,4 @@ function Auth() {
   );
 }
 
-export default Auth;
+export default isAuth(Auth);
