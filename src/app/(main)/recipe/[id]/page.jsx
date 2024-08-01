@@ -13,13 +13,16 @@ export default async function RecipePage({ params }) {
 
   // Fetch user data if recipe exists
   let user = null;
-  console.log(user, recipe.userID);
   if (recipe && recipe.userID) {
-    const userDoc = doc(db, "users", "LvUClZ5wbsQ12GLdJu5QCsygG1y1");
-    const userSnapshot = await getDoc(userDoc);
-    user = userSnapshot.exists() ? userSnapshot.data() : null;
+    try {
+      const userDoc = doc(db, "users", recipe.userID);
+      const userSnapshot = await getDoc(userDoc);
+      user = userSnapshot.exists() ? userSnapshot.data() : null;
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
   }
-  console.log(user, recipe);
+
   if (!recipe) {
     // If recipe is not found, show a 404 page
     notFound();

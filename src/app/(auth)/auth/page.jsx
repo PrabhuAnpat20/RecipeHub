@@ -1,14 +1,16 @@
+// Auth Component
 "use client";
 import React, { useState } from "react";
-import { auth, googleProvider } from "@/app/lib/firebase/clientApp";
+import { auth, googleProvider, db } from "@/app/lib/firebase/clientApp";
 import { toast } from "sonner";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInWithPopup,
-  updateProfile, // Import updateProfile
+  updateProfile,
 } from "firebase/auth";
 import { useRouter } from "next/navigation";
+import { doc, setDoc } from "firebase/firestore"; // Firestore imports
 import isAuth from "@/lib/hooks/isAuth";
 
 function Auth() {
@@ -22,7 +24,20 @@ function Auth() {
   const signInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
-      console.log(result);
+      const user = result.user;
+
+      // Extract displayName and email
+      const displayName = user.displayName || `${firstName} ${lastName}`;
+      const email = user.email;
+
+      // Store user data in Firestore
+      await setDoc(doc(db, "users", user.uid), {
+        name: displayName,
+        email: email,
+        userID: user.uid,
+      });
+      console.log("User data stored in Firestore");
+
       toast.success("Logged in with Google successfully!");
       router.push("/"); // Redirect after successful sign-in
     } catch (error) {
@@ -53,14 +68,15 @@ function Auth() {
         const updatedUser = auth.currentUser;
         console.log("Updated user displayName:", updatedUser.displayName);
         toast.success("Signed up successfully!");
+        // Set user data in Firestore
+        await setDoc(doc(db, "users", user.uid), {
+          name: `${firstName} ${lastName}`,
+          email: user.email,
+          userID: user.uid,
+        });
+        console.log("User data stored in Firestore");
 
-        // Optionally set user data in Firestore
-        // await setDoc(doc(firestore, "users", user.uid), {
-        //   firstName,
-        //   lastName,
-        //   email: user.email,
-        // });
-
+        toast.success("Signed up successfully!");
         router.push("/"); // Redirect after sign-up
       }
     } catch (error) {
