@@ -11,8 +11,10 @@ import EmojiNature from "@mui/icons-material/EmojiNature";
 import Fastfood from "@mui/icons-material/Fastfood";
 import Restaurant from "@mui/icons-material/Restaurant";
 import LocalDining from "@mui/icons-material/LocalDining";
-import Link from "next/link"; // Import Link from next/link
+import CancelIcon from "@mui/icons-material/Cancel";
 
+import Link from "next/link"; // Import Link from next/link
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
 const categories = {
   type: ["Breakfast", "Lunch", "Dinner"],
   dietary: ["Veg", "Non-Veg"],
@@ -42,6 +44,7 @@ const getCategoryIcon = (categoryType, item) => {
 };
 
 export default function Recipe() {
+  const [filter, setFilter] = useState(false);
   const [recipes, setRecipes] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategories, setSelectedCategories] = useState({
@@ -49,7 +52,9 @@ export default function Recipe() {
     dietary: [],
     cuisine: [],
   });
-
+  const toggleFilter = () => {
+    setFilter(!filter);
+  };
   useEffect(() => {
     // Fetch the recipes from Firestore
     const fetchRecipes = async () => {
@@ -106,19 +111,32 @@ export default function Recipe() {
   return (
     <div>
       <Search setSearchQuery={setSearchQuery} />
-      <div className="p-4 ">
-        <div className="flex justify-evenly gap-4">
+      <div className="md:p-4 ">
+        <div className="flex justify-end md:hidden">
+          {!filter ? (
+            <FilterAltIcon
+              className="text-orange-500 mx-3  mt-2"
+              onClick={toggleFilter}
+            />
+          ) : (
+            <CancelIcon
+              className="text-orange-500 mx-3 mt-2"
+              onClick={toggleFilter}
+            />
+          )}
+        </div>
+        <div className="hidden md:flex justify-evenly gap-4 mx-3">
           {Object.entries(categories).map(([categoryKey, items]) => (
             <div key={categoryKey} className="">
-              <h2 className="text-xl font-bold mb-2 capitalize text-orange-500">
+              <h2 className=" text-sm md:text-xl font-bold mb-2 capitalize text-orange-500">
                 {categoryKey}
               </h2>
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-1 md:gap-2 md:mb-4 mb-2">
                 {items.map((item) => (
                   <button
                     key={item}
                     onClick={() => handleCategoryToggle(categoryKey, item)}
-                    className={`flex items-center px-4 py-2 rounded-full ${
+                    className={`flex items-center  px-2 py-1 md:px-4 md:py-2 rounded-full text-xs md:text-sm ${
                       selectedCategories[categoryKey].includes(item)
                         ? "bg-[#FD6A31] text-white"
                         : "bg-gray-50 border   border-orange-500"
@@ -132,13 +150,38 @@ export default function Recipe() {
             </div>
           ))}
         </div>
-        <div className="mx-24 my-7">
+        {filter && (
+          <div className="md:hidden justify-evenly gap-4 mx-3">
+            {Object.entries(categories).map(([categoryKey, items]) => (
+              <div key={categoryKey} className="">
+                <h2 className=" text-sm md:text-xl font-bold mb-2 capitalize text-orange-500">
+                  {categoryKey}
+                </h2>
+                <div className="flex flex-wrap gap-1 md:gap-2 md:mb-4 mb-2">
+                  {items.map((item) => (
+                    <button
+                      key={item}
+                      onClick={() => handleCategoryToggle(categoryKey, item)}
+                      className={`flex items-center  px-2 py-1 md:px-4 md:py-2 rounded-full text-xs md:text-sm ${
+                        selectedCategories[categoryKey].includes(item)
+                          ? "bg-[#FD6A31] text-white"
+                          : "bg-gray-50 border   border-orange-500"
+                      }`}
+                    >
+                      {getCategoryIcon(categoryKey, item)}
+                      <span className="ml-2">{item}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <div className="md:mx-24 mx-2 my-7">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
             {filteredRecipes.map((recipe) => (
-              <Link
-                key={recipe.id}
-                href={`/recipe/${recipe.id}`} // Adjust the href to match your routing
-              >
+              <Link key={recipe.id} href={`/recipe/${recipe.id}`}>
                 <Card data={recipe} />
               </Link>
             ))}

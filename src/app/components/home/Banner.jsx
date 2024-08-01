@@ -13,7 +13,7 @@ function Banner() {
           <p className="text-slate-400 my-2">
             Craft Delicious Meals and Share Your Culinary Magic with Others
           </p>
-          <div className="flex  my-6  md:mr-16  md:w-96  text-sm md:text-base mx-auto  md:mx-0 ">
+          {/* <div className="flex  my-6  md:mr-16  md:w-96  text-sm md:text-base mx-auto  md:mx-0 ">
             <input
               type="text"
               placeholder="Type your favorite recipe here"
@@ -22,7 +22,7 @@ function Banner() {
             <button className="bg-[#FD6A31] text-white p-2  rounded-r-md hover:bg-[#e55d22] transition-colors">
               Search
             </button>
-          </div>
+          </div> */}
         </div>
         <div className="flex my-4   justify-center">
           <img src="/banner.png" alt="" className=" w-48 md:w-96 " />

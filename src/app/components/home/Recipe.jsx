@@ -8,7 +8,7 @@ function Card({ data }) {
 
   return (
     <div className="bg-white rounded-md shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:z-20">
-      <MUICard className="relative h-72  md:h-96">
+      <MUICard className="relative  h-44 md:h-40 ">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${imageUrl})` }}

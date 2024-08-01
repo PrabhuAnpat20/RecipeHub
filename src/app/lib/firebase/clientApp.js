@@ -9,6 +9,9 @@ import {
   getDocs,
   getDoc,
   doc,
+  setDoc,
+  query,
+  orderBy,
 } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -43,4 +46,7 @@ export {
   storage,
   getDoc,
   doc,
+  setDoc,
+  query,
+  orderBy,
 };

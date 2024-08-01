@@ -8,7 +8,7 @@ import RestaurantIcon from "@mui/icons-material/Restaurant";
 import SoupKitchenIcon from "@mui/icons-material/SoupKitchen";
 import LocalDiningIcon from "@mui/icons-material/LocalDining";
 import Typography from "@mui/material/Typography";
-import Card from "./Card";
+import HomeCard from "./Card";
 
 export default function TimelineComponent() {
   return (
@@ -165,7 +165,7 @@ export default function TimelineComponent() {
         </Timeline>
       </div>
       <div className=" col-span-7 ">
-        <Card />
+        <HomeCard />
       </div>
     </div>
   );

@@ -12,11 +12,11 @@ export default function Search({ setSearchQuery }) {
         <img
           src="search4.avif"
           alt="Background"
-          className="w-full h-[450px] object-cover opacity-80"
+          className="w-full h-[300px] md:h-[450px] object-cover opacity-80"
         />
       </div>
       <div className="absolute inset-0 flex justify-center items-center">
-        <div className="w-1/2">
+        <div className="md:w-1/2">
           <div className="flex justify-between p-1 px-3 bg-slate-50 rounded-lg">
             <input
               type="text"

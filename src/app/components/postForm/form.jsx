@@ -397,7 +397,7 @@ const RecipeForm = () => {
               {...getInputProps()}
               style={{ display: "none" }}
             />
-            <div className="w-1/2 min-h-[250px] flex flex-col items-center mx-auto justify-center border-4 border-dashed border-gray-600 rounded-[7px]">
+            <div className="md:w-1/2 min-h-[250px] flex flex-col items-center mx-auto justify-center border-4 border-dashed border-gray-600 rounded-[7px]">
               {!selectedImage ? (
                 <div className="text-center">
                   <img

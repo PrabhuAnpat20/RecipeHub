@@ -36,6 +36,7 @@ function Auth() {
         email: email,
         userID: user.uid,
       });
+      await setDoc(doc(db, "favorites", user.uid), {});
       console.log("User data stored in Firestore");
 
       toast.success("Logged in with Google successfully!");
@@ -74,6 +75,7 @@ function Auth() {
           email: user.email,
           userID: user.uid,
         });
+        await setDoc(doc(db, "favorites", user.uid), {});
         console.log("User data stored in Firestore");
 
         toast.success("Signed up successfully!");
