@@ -115,10 +115,9 @@ const MainCard = ({ recipe, User }) => {
           <div className="w-full sm:w-1/2">
             <CardMedia
               component="img"
-              height="200"
               image={recipe.imageUrl}
               alt={recipe.recipeName}
-              className="object-cover "
+              className="object-cover h-96 "
             />
           </div>
           <div className="w-full sm:w-1/2 p-4">

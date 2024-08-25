@@ -45,6 +45,9 @@ function NavBar() {
       });
   };
 
+  const isActive = (path) =>
+    router.asPath === path ? "text-[#FD6A31] underline" : "";
+
   return (
     <div className="p-4 md:mx-24 bg-white">
       <div className="flex justify-between items-center">
@@ -60,33 +63,25 @@ function NavBar() {
         <div className="hidden md:flex md:gap-14 font-medium text-base">
           <Link href="/">
             <p
-              className={`hover:text-[#FD6A31] cursor-pointer ${
-                typeof window !== "undefined" && router.pathname === "/"
-                  ? "text-[#FD6A31]"
-                  : ""
-              }`}
+              className={`hover:text-[#FD6A31] cursor-pointer ${isActive("/")}`}
             >
               Home
             </p>
           </Link>
           <Link href="/recipes">
             <p
-              className={`hover:text-[#FD6A31] cursor-pointer ${
-                typeof window !== "undefined" && router.pathname === "/recipes"
-                  ? "text-[#FD6A31]"
-                  : ""
-              }`}
+              className={`hover:text-[#FD6A31] cursor-pointer ${isActive(
+                "/recipes"
+              )}`}
             >
               Recipes
             </p>
           </Link>
           <Link href="/post">
             <p
-              className={`hover:text-[#FD6A31] cursor-pointer ${
-                typeof window !== "undefined" && router.pathname === "/post"
-                  ? "text-[#FD6A31]"
-                  : ""
-              }`}
+              className={`hover:text-[#FD6A31] cursor-pointer ${isActive(
+                "/post"
+              )}`}
             >
               Share Recipes
             </p>
@@ -133,49 +128,41 @@ function NavBar() {
         <div className="flex flex-col text-center gap-y-2 mt-4 md:hidden border-t border-orange-500">
           <Link href="/">
             <p
-              className={`hover:text-[#FD6A31] cursor-pointer mt-2 ${
-                typeof window !== "undefined" && router.pathname === "/"
-                  ? "text-[#FD6A31]"
-                  : ""
-              }`}
+              className={`hover:text-[#FD6A31] cursor-pointer mt-2 ${isActive(
+                "/"
+              )}`}
             >
               Home
             </p>
           </Link>
           <Link href="/recipes">
             <p
-              className={`hover:text-[#FD6A31] cursor-pointer ${
-                typeof window !== "undefined" && router.pathname === "/recipes"
-                  ? "text-[#FD6A31]"
-                  : ""
-              }`}
+              className={`hover:text-[#FD6A31] cursor-pointer ${isActive(
+                "/recipes"
+              )}`}
             >
               Recipes
             </p>
           </Link>
           <Link href="/post">
             <p
-              className={`hover:text-[#FD6A31] cursor-pointer ${
-                typeof window !== "undefined" && router.pathname === "/post"
-                  ? "text-[#FD6A31]"
-                  : ""
-              }`}
+              className={`hover:text-[#FD6A31] cursor-pointer ${isActive(
+                "/post"
+              )}`}
             >
               Share Recipes
             </p>
           </Link>
           <Link href="/profile">
             <p
-              className={`hover:text-[#FD6A31] cursor-pointer ${
-                typeof window !== "undefined" && router.pathname === "/profile"
-                  ? "text-[#FD6A31]"
-                  : ""
-              }`}
+              className={`hover:text-[#FD6A31] cursor-pointer ${isActive(
+                "/profile"
+              )}`}
             >
               Dashboard
             </p>
           </Link>
-          <div className=" flex gap-2 text-center justify-center">
+          <div className="flex gap-2 text-center justify-center">
             <MdExitToApp className="text-red-500 mr-2 my-auto" />
             <div onClick={handleSignOut}>Logout</div>
           </div>
