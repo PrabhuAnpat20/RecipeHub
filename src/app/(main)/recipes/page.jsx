@@ -182,7 +182,7 @@ export default function Recipe() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
             {filteredRecipes.map((recipe) => (
               <Link key={recipe.id} href={`/recipe/${recipe.id}`}>
-                <Card data={recipe} />
+                <Card data={recipe} key={recipe.id} />
               </Link>
             ))}
           </div>

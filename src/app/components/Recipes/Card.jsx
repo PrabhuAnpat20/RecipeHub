@@ -4,10 +4,13 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import PeopleIcon from "@mui/icons-material/People";
 
 function Card({ data }) {
-  const { recipeName, cookingTime, numServings, imageUrl } = data;
+  const { recipeName, cookingTime, numServings, imageUrl, key } = data;
 
   return (
-    <div className="bg-white rounded-md shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:z-20">
+    <div
+      className="bg-white rounded-md shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:z-20"
+      key={key}
+    >
       <MUICard className="relative h-72  md:h-96">
         <div
           className="absolute inset-0 bg-cover bg-center"

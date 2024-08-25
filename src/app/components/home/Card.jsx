@@ -49,7 +49,7 @@ function HomeCard() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-2">
         {recipes.map((recipe) => (
           <Link key={recipe.id} href={`/recipe/${recipe.id}`}>
-            <Card data={recipe} />
+            <Card data={recipe} key={recipe.id} />
           </Link>
         ))}
       </div>
