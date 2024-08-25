@@ -31,7 +31,9 @@ function HomeCard() {
 
   return (
     <div className="mt-3 md:mt-0 text-center md:text-left">
-      <p className="md:text-4xl text-2xl font-medium my-3">Let's Cook Now...</p>
+      <p className="md:text-4xl text-2xl font-medium my-3">
+        Let&apos;s Cook Now...
+      </p>
       <p className="text-base text-slate-600 my-2 md:text-lg">
         Make your family happy with the dishes you make. With us, cooking just
         got easier.

@@ -177,7 +177,12 @@ const MainCard = ({ recipe, User }) => {
                 </div>
                 <div className="flex items-center mt-2">
                   {recipe.dietary.map((diet) => (
-                    <img src={`/${diet}.png`} alt="" className=" w-8" />
+                    <img
+                      src={`/${diet}.png`}
+                      alt={diet}
+                      className="w-8"
+                      key={diet}
+                    />
                   ))}
                 </div>
               </div>

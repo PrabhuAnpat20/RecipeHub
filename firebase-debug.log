@@ -1,0 +1,89 @@
+[debug] [2024-08-25T20:13:10.685Z] ----------------------------------------------------------------------
+[debug] [2024-08-25T20:13:10.687Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\anapa\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-08-25T20:13:10.687Z] CLI Version:   13.15.4
+[debug] [2024-08-25T20:13:10.687Z] Platform:      win32
+[debug] [2024-08-25T20:13:10.687Z] Node Version:  v18.17.1
+[debug] [2024-08-25T20:13:10.688Z] Time:          Mon Aug 26 2024 01:43:10 GMT+0530 (India Standard Time)
+[debug] [2024-08-25T20:13:10.688Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-08-25T20:13:10.751Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-08-25T20:13:10.751Z] > authorizing via signed-in user (anapatprabhu@gmail.com)
+[debug] [2024-08-25T20:13:10.751Z] [iam] checking project recipehub-4f83f for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-08-25T20:13:10.754Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/recipehub-4f83f:testIamPermissions [none]
+[debug] [2024-08-25T20:13:10.754Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/recipehub-4f83f:testIamPermissions x-goog-quota-user=projects/recipehub-4f83f
+[debug] [2024-08-25T20:13:10.754Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/recipehub-4f83f:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-08-25T20:13:12.511Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/recipehub-4f83f:testIamPermissions 200
+[debug] [2024-08-25T20:13:12.512Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/recipehub-4f83f:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-08-25T20:13:12.515Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/recipehub-4f83f [none]
+[debug] [2024-08-25T20:13:13.367Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/recipehub-4f83f 200
+[debug] [2024-08-25T20:13:13.367Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/recipehub-4f83f {"projectId":"recipehub-4f83f","projectNumber":"1056716500699","displayName":"RecipeHub","name":"projects/recipehub-4f83f","resources":{"hostingSite":"recipehub-4f83f","storageBucket":"recipehub-4f83f.appspot.com","locationId":"asia-south1"},"state":"ACTIVE","etag":"1_d6b2f3f0-5865-4182-8cf6-cd450d9a73be"}
+[debug] [2024-08-25T20:13:16.205Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/recipehub-4f83f/sites pageToken=&pageSize=10
+[debug] [2024-08-25T20:13:17.549Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/recipehub-4f83f/sites 200
+[debug] [2024-08-25T20:13:17.550Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/recipehub-4f83f/sites {"sites":[{"name":"projects/recipehub-4f83f/sites/recipehub-4f83f","defaultUrl":"https://recipehub-4f83f.web.app","appId":"1:1056716500699:web:56359cf5686e6b169f26fe","type":"DEFAULT_SITE"}]}
+[debug] [2024-08-25T20:13:17.551Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:1056716500699:web:56359cf5686e6b169f26fe/config [none]
+[debug] [2024-08-25T20:13:19.468Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:1056716500699:web:56359cf5686e6b169f26fe/config 200
+[debug] [2024-08-25T20:13:19.468Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:1056716500699:web:56359cf5686e6b169f26fe/config {"projectId":"recipehub-4f83f","appId":"1:1056716500699:web:56359cf5686e6b169f26fe","storageBucket":"recipehub-4f83f.appspot.com","locationId":"asia-south1","apiKey":"AIzaSyCcKDh5iaea2_8yGpfECcE48NdbFmztj2w","authDomain":"recipehub-4f83f.firebaseapp.com","messagingSenderId":"1056716500699","measurementId":"G-RYSP5VKC4K"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+   The integration is known to work with Next.js version 12 - 14.0. You may encounter errors.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2024-08-25T20:13:26.458Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/recipehub-4f83f/sites/recipehub-4f83f [none]
+[debug] [2024-08-25T20:13:27.624Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/recipehub-4f83f/sites/recipehub-4f83f 200
+[debug] [2024-08-25T20:13:27.624Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/recipehub-4f83f/sites/recipehub-4f83f {"name":"projects/recipehub-4f83f/sites/recipehub-4f83f","defaultUrl":"https://recipehub-4f83f.web.app","appId":"1:1056716500699:web:56359cf5686e6b169f26fe","type":"DEFAULT_SITE"}
+[info]   ▲ Next.js 14.2.5
+
+[info] 
+
+[info]    Creating an optimized production build ...
+
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+
+[info] 
+Failed to compile.
+
+./src/app/(auth)/auth/page.jsx
+101:9  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app/(main)/profile/page.jsx
+26:6  Warning: React Hook useEffect has missing dependencies: 'fetchBookmarkedRecipes' and 'fetchUserRecipes'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/app/components/home/Banner.jsx
+28:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app/components/home/Card.jsx
+34:63  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+
+./src/app/components/layout/NavBar.jsx
+34:6  Warning: React Hook useEffect has a missing dependency: 'user'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/app/components/postForm/form.jsx
+403:19  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+419:19  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app/components/Recipes/MainCard.jsx
+180:21  Error: Missing "key" prop for element in iterator  react/jsx-key
+180:21  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app/components/Recipes/Search.jsx
+12:9  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/lib/hooks/isAuth.jsx
+17:8  Warning: React Hook useEffect has a missing dependency: 'router'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/lib/hooks/useAuth.js
+32:6  Warning: React Hook useEffect has a missing dependency: 'user'. Either include it or remove the dependency array. Outer scope values like 'auth' aren't valid dependencies because mutating them doesn't re-render the component.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+[debug] [2024-08-25T20:14:00.588Z] Error: ENOENT: no such file or directory, open 'D:\Spacenos\my-app\.next\export-marker.json'
+[error] 
+[error] Error: An unexpected error has occurred.
