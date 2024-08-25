@@ -1,5 +1,6 @@
+import MainCard from "@/app/components/Recipes/MainCard";
 import { doc, getDoc, db } from "@/app/lib/firebase/clientApp";
-import MainCard from "@/app/components/Recipes/mainCard";
+
 import { notFound } from "next/navigation";
 
 export default async function RecipePage({ params }) {
